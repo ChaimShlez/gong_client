@@ -1,4 +1,4 @@
-.Login{
+.Register{
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -6,9 +6,9 @@
     
 }
 
-.login-container{
+.register-container{
     width: 250px;
-    height: 300px;
+    height: 400px;
     margin: 100px auto;
     padding: 20px;
     background-color: #2d2b2b;
@@ -17,17 +17,17 @@
     text-align: center;
 }
 
-.login-form {
+.register-form {
     display: flex;
     flex-direction: column;
 }
-.login-form h2 {
+.register-form h2 {
     margin-bottom: 20px;
     font-size: 24px;
     color: #f9f5f5;
 }
 
-.login-form input {
+.register-form input {
     padding: 10px;
     margin-bottom: 15px;
     font-size: 16px;
@@ -41,11 +41,11 @@
     display: flex;
     
 }
-.Login .btn{
+.Register .btn{
     border-radius: 6px;
     cursor: pointer;
 }
-.Login .login-register{
+.REgister .login-register{
     font-size: .9em;
     color: #162938;
     text-align: center;
@@ -53,13 +53,13 @@
     margin: 25px 0 10px;
 
 }
-.Login .login-register p .link{
+.REgister .login-register p .link{
     color: #e2eaf1;
     text-decoration: none;
     font-weight: 600;
     margin: 6px;
     cursor: pointer;
 }
-.Login .login-register p .link:hover{
+.Register .login-register p .link:hover{
     text-decoration: underline;
 }

@@ -1,4 +1,5 @@
-import { jwtDecode } from 'jwt-decode';  
+
+import {useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import './Login.css';
 import axios from 'axios';
@@ -6,6 +7,12 @@ import axios from 'axios';
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();  
+
+
+    function createUser(){
+        navigate('/register')
+    }
 
     async function loginClicked() {
         try {
@@ -56,6 +63,11 @@ function Login() {
                         required
                     />
                     <input type="button" className="btn" value="Login" onClick={loginClicked} />
+                    <div className="login-register">
+                            <p>                                
+                                <div className="link" onClick={() => createUser()} >Don't have an account?</div>
+                            </p>
+                        </div>
                 </form>
             </div>
         </div>
