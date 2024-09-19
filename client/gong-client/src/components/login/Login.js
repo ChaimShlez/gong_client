@@ -9,22 +9,20 @@ function Login() {
 
     async function loginClicked() {
         try {
+            console.log(email);
+            console.log(password);
             const response = await axios.post("http://localhost:5000/users/login", {
                 email,
                 password
             });
-            console.log(response);
+             console.log(response)
             let token = response.data;
             localStorage.setItem('token', token);
 
             
-            let decodedToken = jwtDecode(token);
-            let strSuccessfulLoginData = decodedToken.sub;
+            //let successfulLoginData = JSON.parse(strSuccessfulLoginData);
 
-            
-            let successfulLoginData = JSON.parse(strSuccessfulLoginData);
-
-            console.log(successfulLoginData);
+           // console.log(successfulLoginData);
 
             axios.defaults.headers.common['Authorization'] = token;
 
