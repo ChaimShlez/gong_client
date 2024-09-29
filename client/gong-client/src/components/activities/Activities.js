@@ -1,37 +1,41 @@
-import './Activities.css';
-// import { useState } from "react";
+import "./Activities.css";
+import { ReactComponent as Search } from "../../assets/search.svg"
+import TableActivity from "./tableActivity/TableActivity"
 
-export default function Activities(){
+export default function Activities() {
   // const [nameCategoty,setNameCategory]=useState ('');
   // const [subCategoty,setSubCategory]=useState ('');
   // const [nameStore,setNameStore]=useState ('');
   // const [price,setPrice]=useState (0.0);
   // const [time,setTime]=useState ('');
-    return(
-        <div className="Activities">
-        <div className="header-activities ">
-        <h4>
-        Activities
-        </h4>
-        </div>
-        <div className="contianer-filters">
-          <div className="buttons-container">
-          <button className="filter-button">Last 7 days <span>&#9660;</span></button>
-          <button className="filter-button">15 Mar - 22 Mar</button>
-          <button className="filter-button">All 35</button>
-          <button className="status-button active">Received 15</button>
-          <button className="status-button">Sent 5</button>
-          <button className="status-button">Convert 10</button>
-          <button className="filter-button">Currency <span>&#9660;</span></button>
-          </div>
-          <div className="search">
-             
-          <input type="text"  placeholder="Search"  className="search-bar"  />
-          </div>
-        </div>
-        <div className="table">
 
+  return (
+    <div className="Activities">
+      <div className="header-activities ">
+        <p className="header">Activities</p>
+      </div>
+      <div className="container-filters">
+        <div className="buttons-container">
+        <button className="filter-button">הצג הכל</button>
+          <button className="filter-button">
+            הצג שבוע אחרון
+          </button>
+          <div>
+          <input type="date" className="filter-date-button" />
+       
+          </div>
         </div>
+        <div className="search">
+          <input type="search" placeholder="חיפוש" className="search-bar" /> 
+          <Search className="search-icon" />
         </div>
-    );
+      </div>
+      <div className="table"></div>
+
+      <div style={{marginTop:"15px"}}>
+        <TableActivity />
+
+      </div>
+    </div>
+  );
 }

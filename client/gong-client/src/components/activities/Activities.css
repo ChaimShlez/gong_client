@@ -1,53 +1,75 @@
 .Activities {
-    width: 100%;
-    height: 100%;
-}
-
-
-.header-activities {
   width: 100%;
-  border-bottom: 1px solid black;
-  padding-bottom: 5px;
-}
-  
-.search {
-  width: 200px;
-  height: 19px;
-  margin: auto;
-  
-  display: flex;
-   border: 1px solid #ccc;
-  padding: 5px;
-  border-radius: 20px;
-   background-color: #fff;
-}
-
-
-
-.Header .search-bar {
-  outline: none;
-  border: none;
-  flex-grow: 1;
   height: 100%;
 }
 
+.header {
+  color: #474b5a;
+  font-family: Inter;
+  font-size: 27px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
 
-.button-container {
+.header-activities {
+  width: 100%;
+  padding-bottom: 5px;
+}
+.search-bar {
+  border-radius: 4px;
+  border: 2px solid #e7eaed;
+  background: #fefefe;
+  width: 268px;
+  height: 28px;
+  flex-shrink: 0;
+  padding: 10px 15px;
+  font-family: Inter;
+  font-size: 12.7px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.search-bar:focus {
+  border-color: #e7eaed !important;
+  outline: none;
+}
+
+.search-bar:valid {
+  border-color: #e7eaed !important;
+}
+
+.search-bar:focus:valid {
+  border-color: #e7eaed !important;
+}
+
+.buttons-container {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  background-color: #f4f4f4; /* Adjust this as needed */
-  padding: 10px;
+  gap: 8px;
 }
-
 .filter-button {
-  background-color: white;
-  border: 1px solid #ccc;
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
+  width: 105px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 13px;
+  border: 1px solid #d4d8dd;
+  background: #fefefe;
+  margin-left: 2px;
 }
 
+.filter-date-button {
+  width: 151px;
+  height: 28px;
+  flex-shrink: 0;
+  flex-shrink: 0;
+  border-radius: 13px;
+  border: 1px solid #d4d8dd;
+  text-align: center;
+}
+
+.date-input::-webkit-inner-spin-button {
+  display: none; /* Hides the spin button in WebKit browsers */
+}
 .status-button {
   background-color: transparent;
   border: none;
@@ -55,7 +77,20 @@
   cursor: pointer;
 }
 
-.status-button.active {
-  color: black;
-  font-weight: bold;
+.container-filters {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.search-icon {
+  position: absolute; /* Positioning the icon inside the container */
+  top: 50%; /* Center the icon vertically */
+  left: 10px; /* Position the icon from the left */
+  transform: translateY(-50%); /* Adjust to center it vertically */
+  width: 16px; /* Set icon width */
+  height: 16px; /* Set icon height */
+  fill: rgba(211, 211, 211, 0.5); /* Icon color */
+  pointer-events: none; /* Prevent clicks on the icon */
 }
