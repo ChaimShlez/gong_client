@@ -25,7 +25,7 @@ function Login() {
              console.log(response)
             let token = response.data;
             localStorage.setItem('token', token);
-
+navigate("/userLog/activities")
             
             //let successfulLoginData = JSON.parse(strSuccessfulLoginData);
 

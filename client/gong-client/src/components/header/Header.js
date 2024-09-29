@@ -1,10 +1,23 @@
-import { Link, Outlet, useLocation } from 'react-router-dom';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import './Header.css';
 import logo from './logo.webp';
 
+import { useState,useEffect } from "react"
 
 export default function Header() {
     const location = useLocation(); 
+    const navigate = useNavigate()
+
+    const [component, setComponent] = useState("activities")
+useEffect(() => {
+   if(component === "activities"){
+     navigate("/userLog/activities")
+   }else {
+    navigate('/userLog/statics')
+   }
+
+
+}, [component])
 
     return (
         <div className="Header">

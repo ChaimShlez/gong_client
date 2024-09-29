@@ -12,20 +12,20 @@ export default function Layout() {
     return (
         <section className="Layout">
             <BrowserRouter>
-            {/* <header>
+            <header>
                     <Header />
                 </header>
-             */}
+            
 
                 <main>
                     <Routes>
                         <Route path="/" element={<Login />} />
                         <Route path="/register" element={<Register />} />
-                        <Route path="/userLog" element={<Header />} >
+                        {/* <Route path="/userLog" element={<Header />} /> */}
                         <Route path="/userLog/activities" element={<Activities />} />
-                            <Route path="/userLog/statics" element={<Statics />} />
+                        <Route path="/userLog/statics" element={<Statics />} />
             
-                        </Route>
+                     
                     </Routes>
                 </main>
 
