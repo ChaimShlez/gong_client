@@ -1,0 +1,41 @@
+.CreateActivities{
+    height: 90%;
+}
+
+
+.container-deteils{
+        height: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.input-box{
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+    margin-bottom: 10px;
+}
+.input-box label {
+    margin-left: 10px; /* Add space between the label and input */
+    width: 100px; /* Fixed width for labels to align inputs */
+    text-align: right; /* Right align labels for RTL */
+}
+.input-box input{
+    
+        display: flex;
+        justify-content: space-around;
+        border-radius: 4px;
+        
+}
+
+.button-save{
+background-color: #006dff;
+  border-radius: 14px;
+  border: 1px solid #174bd1;
+  width: 87px;
+  height: 32px;
+  flex-shrink: 0;
+  color: white;
+}
