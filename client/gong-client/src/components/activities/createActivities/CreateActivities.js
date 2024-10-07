@@ -3,6 +3,7 @@ import './CreateActivities.css';
 import axios from 'axios';
 
 export default function CreateActivities() {
+    console.log('GGGGGGG')
     const [categories, setCategories] = useState([{ id: 0, name: '' }]);
     const [category, setCategory] = useState("");
     const [subCategories, setSubCategories] = useState([{ id: 0, name: '' }]);
