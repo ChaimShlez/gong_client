@@ -3,7 +3,6 @@ import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import './Header.css';
 import logo from './logo.webp';
 
-
 import { ReactComponent as MoneyWallet } from "../../assets/money_wallet.svg"
 
 
