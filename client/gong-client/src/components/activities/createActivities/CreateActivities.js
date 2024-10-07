@@ -64,7 +64,7 @@ export default function CreateActivities() {
                 <h6>עדכון רכישה</h6>
             </div>
             <div className="container-details">
-                {/* Category Dropdown */}
+            
                 <div className="input-box">
                     <label>קטגוריה</label>
                     <select 

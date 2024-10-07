@@ -9,6 +9,7 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    
 }
 
 .input-box{
@@ -23,7 +24,7 @@
     text-align: right; /* Right align labels for RTL */
 }
 .input-box input{
-    
+     
         display: flex;
         justify-content: space-around;
         border-radius: 4px;
