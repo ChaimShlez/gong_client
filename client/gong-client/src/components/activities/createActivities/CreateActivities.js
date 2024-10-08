@@ -6,9 +6,10 @@ export default function CreateActivities() {
     console.log('GGGGGGG')
     const [categories, setCategories] = useState([{ id: 0, name: '' }]);
     const [category, setCategory] = useState("");
+    const [revenueCategory, setrevenueCategory] = useState(null);
     const [subCategories, setSubCategories] = useState([{ id: 0, name: '' }]);
     const [selectedSubCategory, setSelectedSubCategory] = useState("");
-    const [userID, setUserID] = useState("");
+   // const [userID, setUserID] = useState("1");
     const [price, setPrice] = useState("");
     const [storeName, setStoreName] = useState("");
 
@@ -29,7 +30,7 @@ export default function CreateActivities() {
         }
     }
 
-    // Fetch subcategories when a category is selected
+   
     async function clickedCategory(categoryId) {
         try {
             let url = `http://localhost:5000/categories/subCategory/${categoryId}`;
@@ -42,20 +43,24 @@ export default function CreateActivities() {
         }
     }
 
-    // Create new activity
+   
     async function createActivity() {
+        
         try {
             const response = await axios.post("http://localhost:5000/logs", {
-                category,
+                
                 selectedSubCategory,
-                userID,
+                category,
+               //revenueCategory,
+                userID:1,
                 price,
                 storeName
             });
+            
             console.log(response);
         } catch (e) {
             console.error(e);
-            alert("Failed to create activity, try again later");
+            alert("Failed to create activity, try again later " + e);
         }
     }
 
@@ -64,7 +69,7 @@ export default function CreateActivities() {
             <div className="header">
                 <h6>עדכון רכישה</h6>
             </div>
-            <div className="container-details">
+            <div className="container-modal">
             
                 <div className="input-box">
                     <label>קטגוריה</label>
