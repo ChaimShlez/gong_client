@@ -3,7 +3,7 @@ import './CreateActivities.css';
 import axios from 'axios';
 
 export default function CreateActivities() {
-    console.log('GGGGGGG')
+    
     const [categories, setCategories] = useState([{ id: 0, name: '' }]);
     const [category, setCategory] = useState("");
     const [revenueCategory, setrevenueCategory] = useState(null);
@@ -12,6 +12,7 @@ export default function CreateActivities() {
    // const [userID, setUserID] = useState("1");
     const [price, setPrice] = useState("");
     const [storeName, setStoreName] = useState("");
+    const [paymentMethod, setPaymentMethod] = useState("");
 
    
     useEffect(() => {
@@ -54,7 +55,8 @@ export default function CreateActivities() {
                //revenueCategory,
                 userID:1,
                 price,
-                storeName
+                storeName,
+                paymentMethod
             });
             
             console.log(response);
@@ -106,7 +108,7 @@ export default function CreateActivities() {
                     </select>
                 </div>
 
-                {/* Price Input */}
+                
                 <div className="input-box">
                     <label>מחיר</label>
                     <input
@@ -127,8 +129,17 @@ export default function CreateActivities() {
                         required
                     />
                 </div>
-
-                {/* Save Button */}
+                <div className="input-box">
+                    <label>אופן-תשלום</label>
+                    <input
+                        type="text"
+                        value={paymentMethod}
+                        onChange={(e) => setPaymentMethod(e.target.value)}
+                        required
+                    />
+                </div>
+                
+                
                 <button className="button-save" onClick={createActivity}>שמור</button>
             </div>
         </div>

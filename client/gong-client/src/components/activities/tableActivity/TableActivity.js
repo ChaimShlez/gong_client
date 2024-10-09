@@ -1,10 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./TableActivity.css";
+import axios from 'axios';
 import { ReactComponent as ArrowDown } from "../../../assets/red-arrow-down.svg";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 
-const tableActivity = () => {
-  let columns = [
+
+const TableActivity = () => {
+  const [activities, setActivities] = useState([]);
+
+  useEffect(() => {
+    async function getActivities() {
+      try {
+        let url = `http://localhost:5000/logs/3`;
+        let response = await axios.get(url);
+        setActivities(response.data);
+      } catch (e) {
+        console.error(e);
+        alert("Failed to fetch activities, try again later");
+      }
+    }
+
+    getActivities();
+  }, []);
+
+  const columns = [
     "הוצאה/הכנסה",
     "עלות",
     "צורת תשלום",
@@ -12,57 +31,30 @@ const tableActivity = () => {
     "הבעל/האשה",
     "תאריך",
   ];
-
-  const data = [
-    {
-      col1: "הוצאה",
-      col2: "119.7",
-      col3: "אשראי",
-      col4: "אושר עד",
-      col5: "shmuel",
-      col6: "Aug 28,2023 3:40",
-    },
-    {
-      col1: "הוצאה",
-      col2: "40",
-      col3: "אשראי",
-      col4: "יש בשכונה",
-      col5: "haim",
-      col6: "Aug 28,2023 3:40",
-    },
-    {
-      col1: "הכנסה",
-      col2: "120000",
-      col3: "העברה בנקאית",
-      col4: "משכורת",
-      col5: "shmuel",
-      col6: "Aug 28,2023 3:40",
-    },
-  ];
-  const renderArrow = (type) => {
-    console.log(type === "הוצאה");
-    if (type === "הוצאה") {
-      return <ArrowDown style={{ width: "20px" }} />;
-    } else {
-      return <span style={{ color: "green" }}>⬇️</span>;
-    }
-  };
+  // const renderArrow = (type) => {
+  //   console.log(type === "expenditure");
+  //   if (type === "expenditure") {
+  //   return <ArrowDown style={{ width: "20px" }} />;
+  //   } else {
+  //   return <span style={{ color: "green" }}>⬇️</span>;
+  //   }
+  //   };
   return (
     <div>
       <table>
         <thead>
           <tr>
-            {columns.map((row, index) => (
-              <th key={index}>{row}</th>
+            {columns.map((column, index) => (
+              <th key={index}>{column}</th>
             ))}
           </tr>
         </thead>
         <tbody>
-          {data.map((row, index) => (
+          {activities.map((activity, index) => (
             <tr key={index}>
               <td>
-                {row.col1}
-                {row.col1 === "הוצאה" ? (
+                {activity.revenue_category === null ? "הוצאה" : "הכנסה"}
+                {activity.revenue_category === null ? (
                   <FaArrowUp
                     style={{
                       color: "red",
@@ -80,11 +72,11 @@ const tableActivity = () => {
                   />
                 )}
               </td>
-              <td>{row.col2}</td>
-              <td>{row.col3}</td>
-              <td>{row.col4}</td>
-              <td>{row.col5}</td>
-              <td>{row.col6}</td>
+              <td>{activity.price}</td>
+              <td>{activity.payment_method}</td>
+              <td>{activity.store_name}</td>
+              <td>{activity.user_name}</td>
+              <td>{activity.date}</td>
             </tr>
           ))}
         </tbody>
@@ -93,4 +85,4 @@ const tableActivity = () => {
   );
 };
 
-export default tableActivity;
+export default TableActivity;
