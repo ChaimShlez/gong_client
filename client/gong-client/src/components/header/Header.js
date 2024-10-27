@@ -14,12 +14,17 @@ const customStyles = {
         bottom: 'auto',
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
-        background: 'transparent',
-        height: '65%',
+        backgroundColor: '#8fb1de', 
+        height: '50%',
         width: '25%',
-       
+        border: '2px solid #006dff', 
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', 
+        borderRadius: '10px', 
+        opacity: '0.95', 
+    
     },
 };
+
 
 Modal.setAppElement('#root');
 
@@ -60,7 +65,7 @@ export default function Header() {
                 </div>
             </div>
             <Modal isOpen={isModalOpen} onRequestClose={closeModal} style={customStyles}>
-                <CreateActivities />
+                <CreateActivities setIsModalOpen={setIsModalOpen}/>
             </Modal>
             <div className='line-two'>
                 <button

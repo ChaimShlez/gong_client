@@ -1,6 +1,15 @@
 .CreateActivities{
     height: 90%;
 }
+.buttons-option{
+    background-color: #162938;
+  border-radius: 14px;
+  border: 1px solid #041b54;
+  width: 87px;
+  height: 32px;
+  flex-shrink: 0;
+  color: #e0e7ff;
+}
 
 
 .container-modal{
@@ -11,13 +20,17 @@
     align-items: center;
     
 }
+.header h6{
+    color: black;
+}
+
 
 .input-box{
     display: flex;
     justify-content: flex-end; 
     align-items: center;
     margin-bottom: 10px;
-    width: 45%;
+    
 }
 .container-modal > div:nth-child(1) {
     display: flex;
@@ -32,16 +45,24 @@
         width: 110px;
         display: flex;
         justify-content: space-around;
-        border-radius: 4px;
-        
+        border-radius: 14px ;
+        border-color: #041b54;
+}
+
+.input-box select{
+    border-radius: 14px ;
+ border-color: #041b54;
+ height: 23px;
+    width:116px;
+
 }
 
 .button-save{
-background-color: #006dff;
+background-color: #162938;
   border-radius: 14px;
-  border: 1px solid #174bd1;
+  border: 1px solid #041b54;
   width: 87px;
   height: 32px;
   flex-shrink: 0;
-  color: white;
+  color: #e0e7ff;
 }

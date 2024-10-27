@@ -1,14 +1,15 @@
 import * as React from 'react';
 import './App.css';
-import Layout from './components/layout/Layout'; 
+import Layout from './components/layout/Layout';
+import { ActivitiesProvider } from './components/activities/ActivitiesProvider';  
 
 function App() {
   return (
-    
-      <div className="App">
+    <div className="App">
+      <ActivitiesProvider>
         <Layout />
-      </div>
-   
+      </ActivitiesProvider>
+    </div>
   );
 }
 
