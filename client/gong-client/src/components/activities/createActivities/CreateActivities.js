@@ -19,7 +19,6 @@ export default function CreateActivities({ setIsModalOpen }) {
     const [incomeManner, setIncomeManner] = useState("");
     const [incomeSource, setIncomeSource] = useState("");
     const [incomeAmount, setIncomeAmount] = useState("");
-
     const { activities, setActivities } = useContext(ActivitiesContext);  // Access activities from context
 
     useEffect(() => {
@@ -29,7 +28,7 @@ export default function CreateActivities({ setIsModalOpen }) {
 
     async function getCategories() {
         try {
-            let url = `http://localhost:5000/categories`;
+            let url = `http://localhost:5005/categories`;
             let response = await axios.get(url);
             setCategories(response.data);
         } catch (e) {
@@ -40,8 +39,9 @@ export default function CreateActivities({ setIsModalOpen }) {
 
     async function getIncomes() {
         try {
-            let url = `http://localhost:5000/income`;
+            let url = `http://localhost:5005/income`;
             let response = await axios.get(url);
+            console.log(response)
             setIncomes(response.data);
         } catch (e) {
             console.error(e);
@@ -51,7 +51,7 @@ export default function CreateActivities({ setIsModalOpen }) {
 
     async function clickedCategory(categoryId) {
         try {
-            let url = `http://localhost:5000/categories/subCategory/${categoryId}`;
+            let url = `http://localhost:5005/categories/subCategory/${categoryId}`;
             let response = await axios.get(url);
             setSubCategories(response.data);
         } catch (e) {
@@ -62,15 +62,16 @@ export default function CreateActivities({ setIsModalOpen }) {
 
     async function createActivity() {
         try {
-            const response = await axios.post("http://localhost:5000/logs", {
+            const response = await axios.post("http://localhost:5005/logs", {
                 selectedSubCategory,
                 category,
-                userID: 1,
+                userID: 2,
                 price,
                 storeName,
                 paymentMethod
             });
-            setActivities([...activities, response.data]); 
+            console.log(response)
+            setActivities(response.data); 
             setIsModalOpen(false);
         } catch (e) {
             console.error(e);
@@ -80,7 +81,7 @@ export default function CreateActivities({ setIsModalOpen }) {
 
     async function createExpense() {
         try {
-            const response = await axios.post("http://localhost:5000/logs/income", {
+            const response = await axios.post("http://localhost:5005/logs/income", {
                 userID: 1,
                 incomeManner,
                 incomeSource,

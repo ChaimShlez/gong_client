@@ -12,7 +12,7 @@ export default function Register(){
         try {
             console.log(name);
             console.log(phone);
-            const response = await axios.post("http://localhost:5000/users/register", {
+            const response = await axios.post("http://localhost:5005/users/register", {
                 email,
                 password,
                 name,

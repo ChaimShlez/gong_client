@@ -7,12 +7,12 @@ import { ActivitiesContext } from '../ActivitiesProvider';
 
 
 const TableActivity = () => {
-    const { activities, setActivities } = useContext(ActivitiesContext);  // Access activities from context
+    const { activities, setActivities } = useContext(ActivitiesContext); 
 
     useEffect(() => {
         async function getActivities() {
             try {
-                let url = `http://localhost:5000/logs/1`;
+                let url = `http://localhost:5005/logs/2`;
                 let response = await axios.get(url);
                 setActivities(response.data);  
         
