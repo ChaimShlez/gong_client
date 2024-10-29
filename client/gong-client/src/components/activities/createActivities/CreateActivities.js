@@ -20,7 +20,36 @@ export default function CreateActivities({ setIsModalOpen }) {
     const [incomeSource, setIncomeSource] = useState("");
     const [incomeAmount, setIncomeAmount] = useState("");
 
-    const { activities, setActivities } = useContext(ActivitiesContext);  // Access activities from context
+    const { activities, setActivities } = useContext(ActivitiesContext); 
+    
+    async function createActivity(type) {
+        try {
+            const payload = type ==='הוצאה'
+            ? {
+                selectedSubCategory,
+                category,
+                userID: 1,
+                price,
+                storeName,
+                paymentMethod
+            }
+            : {
+                userID: 1,
+                incomeManner,
+                incomeSource,
+                incomeAmount
+            };
+
+        const response = await axios.post("http://localhost:5000/logs", payload);
+            setActivities(response.data); 
+           
+            setIsModalOpen(false);
+        } catch (e) {
+            console.error(e);
+            alert("Failed to create activity, try again later " + e);
+        }
+    }
+
 
     useEffect(() => {
         getCategories();
@@ -60,40 +89,10 @@ export default function CreateActivities({ setIsModalOpen }) {
         }
     }
 
-    async function createActivity() {
-        try {
-            const response = await axios.post("http://localhost:5000/logs", {
-                selectedSubCategory,
-                category,
-                userID: 1,
-                price,
-                storeName,
-                paymentMethod
-            });
-            setActivities([...activities, response.data]); 
-            setIsModalOpen(false);
-        } catch (e) {
-            console.error(e);
-            alert("Failed to create activity, try again later " + e);
-        }
-    }
-
-    async function createExpense() {
-        try {
-            const response = await axios.post("http://localhost:5000/logs/income", {
-                userID: 1,
-                incomeManner,
-                incomeSource,
-                incomeAmount
-            });
-            setActivities([...activities, response.data]);  
-            setIsModalOpen(false);
-        } catch (e) {
-            console.error(e);
-            alert("Failed to create income, try again later " + e);
-        }
-    }
-
+   
+    
+    
+    
     
 
 
@@ -172,7 +171,8 @@ export default function CreateActivities({ setIsModalOpen }) {
                                 required
                             />
                         </div>
-                        <button className="button-save" onClick={createActivity}>שמור</button>
+                        <button className="button-save" onClick={() => createActivity('הוצאה')}>שמור</button>
+
                     </div>
                 </div>
             )}
@@ -216,7 +216,8 @@ export default function CreateActivities({ setIsModalOpen }) {
                                 required
                             />
                         </div>
-                        <button className="button-save" onClick={createExpense}>שמור</button>
+                        <button className="button-save" onClick={() => createActivity('הכנסה')}>שמור</button>
+
                     </div>
                 </div>
             )}

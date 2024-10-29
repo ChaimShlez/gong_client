@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import "./TableActivity.css";
 import axios from 'axios';
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
@@ -7,7 +7,8 @@ import { ActivitiesContext } from '../ActivitiesProvider';
 
 
 const TableActivity = () => {
-    const { activities, setActivities } = useContext(ActivitiesContext);  // Access activities from context
+    const { activities, setActivities } = useContext(ActivitiesContext);  
+    //const [activitiesDB,setActivitiesDB]=useState([]);
 
     useEffect(() => {
         async function getActivities() {
@@ -15,6 +16,7 @@ const TableActivity = () => {
                 let url = `http://localhost:5000/logs/1`;
                 let response = await axios.get(url);
                 setActivities(response.data);  
+                console.log(response.data)
         
             } catch (e) {
                 console.error(e);
@@ -23,7 +25,9 @@ const TableActivity = () => {
         }
         getActivities();
     }, []);
-   
+     
+    
+     
     const columns = [
         "הוצאה/הכנסה",
         "עלות",
@@ -47,8 +51,8 @@ const TableActivity = () => {
                     {activities.map((activity, index) => (
                         <tr key={index}>
                             <td>
-                                {activity.revenue_category === null ? "הוצאה" : "הכנסה"}
-                                {activity.revenue_category === null ? (
+                                {activity.revenue_name === null ? "הוצאה" : "הכנסה"}
+                                {activity.revenue_name === null ? (
                                     <FaArrowUp style={{ color: "red", marginRight: "5px" }} />
                                 ) : (
                                     <FaArrowDown style={{ color: "green", marginRight: "5px" }} />
@@ -56,8 +60,10 @@ const TableActivity = () => {
                             </td>
                             <td>{activity.price}</td>
                             <td>{activity.payment_method}</td>
-                            <td>{activity.store_name}</td>
-                            <td>{activity.revenue_category}</td>
+                        {activity.revenue_name===null?<td>{activity.store_name}</td>
+                        :  <td>{activity.revenue_name}</td>}
+                            
+                          
                             <td>{activity.user_name}</td>
                             <td>{activity.date}</td>
                         </tr>
