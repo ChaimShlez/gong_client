@@ -1,44 +1,13 @@
-import React, { useEffect, useContext, useState } from "react";
-import "./TableActivity.css";
-import axios from 'axios';
+import React from "react"
+import "./TableActivity.style.css";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
-//import { ActivitiesProvider } from '../ActivitiesProvider';
-import { ActivitiesContext } from '../ActivitiesProvider';
 
-
-const TableActivity = () => {
-    const { activities, setActivities } = useContext(ActivitiesContext);  
-    //const [activitiesDB,setActivitiesDB]=useState([]);
-
-    useEffect(() => {
-        async function getActivities() {
-            try {
-                let url = `http://localhost:5000/logs/1`;
-                let response = await axios.get(url);
-                setActivities(response.data);  
-                console.log(response.data)
-        
-            } catch (e) {
-                console.error(e);
-                alert("Failed to fetch activities, try again later");
-            }
-        }
-        getActivities();
-    }, []);
-     
-    
-     
-    const columns = [
-        "הוצאה/הכנסה",
-        "עלות",
-        "צורת תשלום",
-        "תיאור",
-        "הבעל/האשה",
-        "תאריך",
-    ];
-
-    return (
-        <div>
+function TableActivityView ({
+    columns,
+    activities
+}) {
+return (
+    <div>
             <table>
                 <thead>
                     <tr>
@@ -70,8 +39,7 @@ const TableActivity = () => {
                     ))}
                 </tbody>
             </table>
-        </div>
-    );
-};
-
-export default TableActivity;
+        </div> 
+)
+}
+export default TableActivityView 
