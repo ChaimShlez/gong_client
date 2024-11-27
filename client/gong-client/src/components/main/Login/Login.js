@@ -15,10 +15,10 @@ function Login() {
 
     async function loginClicked() {
         try {
-            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/users/login`, {email,password});
-            console.log(response)
+            let url =`${process.env.REACT_APP_SERVER_URL}/users/login`
+            const response = await axios.post(url, {email,password});
             let token = response.data.token;
-            sessionStorage.setItem("token", "Bearer " + response.data.token);
+            sessionStorage.setItem("token", "Bearer " + token);
             navigate("/userLog/activities")
             // axios.defaults.headers.common['Authorization'] = token;
 

@@ -6,7 +6,7 @@ import { ActivitiesContext } from "../ActivitiesProvider";
 const TableActivity = () => {
     const { activities, setActivities } = useContext(ActivitiesContext);  
      const token = sessionStorage.getItem("token")
-
+          
     useEffect(() => {
         async function getActivities() {
             try {

@@ -71,9 +71,17 @@ function HeaderView({
           className={`button_nav_bar ${
             activeButton === "button2" ? "active" : "inactive"
           }`}
-          onClick={() => handleButtonClick("button2", "צידע סטטי")}
+          onClick={() => handleButtonClick("button2", "מידע סטטי")}
         >
           Statics
+        </button>
+        <button
+          className={`button_nav_bar ${
+            activeButton === "button3" ? "active" : "inactive"
+          }`}
+          onClick={() => handleButtonClick("button3", "יצירת תקציב")}
+        >
+          יצירת תקציב
         </button>
       </div>
       <div className="line"></div>

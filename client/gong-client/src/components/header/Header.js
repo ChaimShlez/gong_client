@@ -21,8 +21,11 @@ export default function Header() {
         setActiveButton(activeButton === buttonId ? null : buttonId);
         if (component === "מעקב פעולות") {
             navigate("/userLog/activities");
-        } else {
+        }else if (component === "מידע סטטי") {
             navigate("/userLog/statics");
+        }
+        else{
+            navigate("/budgets");
         }
     };
 

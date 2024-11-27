@@ -1,5 +1,6 @@
 import React from "react"
 import "./TableActivity.style.css";
+import moment from 'moment';
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 
 function TableActivityView ({
@@ -34,7 +35,8 @@ return (
                             
                           
                             <td>{activity.user_name}</td>
-                            <td>{activity.date}</td>
+                            
+                            <td>{moment(activity.date).format('MMMM DD, YYYY')}</td>
                         </tr>
                     ))}
                 </tbody>

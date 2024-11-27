@@ -2,11 +2,12 @@ import { useState, useEffect, useContext } from "react";
 
 import axios from "axios";
 import { ActivitiesContext } from "../ActivitiesProvider";
+import { CategoriesContext } from "../ActivitiesProvider";
 import CreateActivitiesView from "./CreateActivities.view";
 
 export default function CreateActivities({ setIsModalOpen }) {
   const [subCategories, setSubCategories] = useState([{ id: 0, name: "" }]);
-  const [categories, setCategories] = useState([{ id: 0, name: "" }]);
+  //const [categories, setCategories] = useState([{ id: 0, name: "" }]);
   const [isPurchaseUpdate, setIsPurchaseUpdate] = useState(true);
   const [isIncome, setIsIncome] = useState(false);
   const [incomes, setIncomes] = useState([{ id: 0, name: "" }]);
@@ -19,7 +20,30 @@ export default function CreateActivities({ setIsModalOpen }) {
   const [incomeSource, setIncomeSource] = useState("");
   const [incomeAmount, setIncomeAmount] = useState("");
   const { activities, setActivities } = useContext(ActivitiesContext);
+  const {categories, setCategories} = useContext(CategoriesContext);
   const token = sessionStorage.getItem("token")
+
+
+
+  async function getCategories() {
+    try {
+      let url = `${process.env.REACT_APP_SERVER_URL}/categories`;
+      let response = await axios.get(url,{
+        headers: {
+            Authorization: token
+        },
+      }
+    );
+
+      setCategories(response.data) 
+     // setCategories(response.data);
+     
+      
+    } catch (e) {
+      console.error(e);
+      // console.log("Failed to fetch categories, try again later");
+    }
+  }
 
   async function createActivity(type) {
     try {
@@ -58,22 +82,7 @@ export default function CreateActivities({ setIsModalOpen }) {
     getIncomes();
   }, []);
 
-  async function getCategories() {
-    try {
-      let url = `${process.env.REACT_APP_SERVER_URL}/categories`;
-      let response = await axios.get(url,{
-        headers: {
-            Authorization: token
-        },
-      }
-    );
-      setCategories(response.data);
-    } catch (e) {
-      console.error(e);
-      // console.log("Failed to fetch categories, try again later");
-    }
-  }
-
+  
   async function getIncomes() {
     console.log(token)
     try {

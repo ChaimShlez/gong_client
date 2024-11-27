@@ -10,7 +10,7 @@ export default function Register(){
 
     async function registerClicked() {
         try {
-    
+               
             const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/users/register`, {
                 email,
                 password,
