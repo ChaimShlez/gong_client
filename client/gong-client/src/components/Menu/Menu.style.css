@@ -1,0 +1,34 @@
+.button-active:hover {
+    background-color: #e0e7ff;
+}
+
+.nuvbar {
+    width: 100%;
+}
+
+.button_nav_bar {
+    border-radius: 13px;
+    border: 1px solid #CED1D9;
+    background: #FEFEFE;
+    width: 100px;
+    height: 30px;
+    flex-shrink: 0;
+}
+
+.button_nav_bar.active {
+    background-color: #006dff;
+    color: white;
+}
+
+.button_nav_bar.inactive {
+    background-color: #FEFEFE;
+}
+
+.line-two {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+.icon{
+    width: 25px;
+}

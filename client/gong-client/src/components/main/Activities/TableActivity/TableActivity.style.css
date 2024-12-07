@@ -1,14 +1,15 @@
-table {
+.activity-table  {
     width: 100%; 
     border-collapse: collapse; 
 }
 
-th, td {
+.activity-table th, td {
     padding: 10px; 
     text-align: left; 
+    border: 1px solid #2d4758;
 }
 
-th {
+.activity-table th {
  background-color: #f2f2f2;
  color: #B1B6C0;
 font-family: Inter;
@@ -19,12 +20,12 @@ line-height: normal;
 text-align: center;
 }
 
-tr {
+.activity-table tr {
     border-bottom: 1px solid #F2F5F7;
     text-align: center;
 }
 
-td {
+.activity-table td {
     border: none;
     text-align: center;
     color: #747680;
@@ -33,9 +34,10 @@ td {
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+    border: 1px solid #7ab9e7;
 }
 
-tr td {
+.activity-table tr td {
     border-top: 1px solid #F2F5F7; 
 }
 

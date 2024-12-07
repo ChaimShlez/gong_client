@@ -5,16 +5,20 @@ import Header from "../header/Header";
 import Activities from "../main/Activities/Activities";
 import Statics from "../main/Statics/Statics";
 import "./Layout.css";
-import Budgets from "../main/Budgets/Budgets";
+import CreateBudgets from '../main/Budgets/CreateBudgets/CreateBudgets'
+import Budgets from '../main/Budgets/Budgets'
+import Menu from '../Menu/Menu';
 
 export default function Layout() {
   return (
     <section className="Layout">
       <BrowserRouter>
       {sessionStorage.getItem("token") !== undefined && sessionStorage.getItem("token") !== null ?   
-       <header>
-          <Header />
-        </header>
+       <><header>
+            <Header />
+          </header><aside>
+              <Menu />
+            </aside></>
         :<></>}
       
         <main>
@@ -24,6 +28,7 @@ export default function Layout() {
             <Route path="/register" element={<Register />} />
             <Route path="/userLog/activities" element={<Activities />} />
             <Route path="/userLog/statics" element={<Statics />} />
+            <Route path="/createBudgets" element={<CreateBudgets />} />
             <Route path="/budgets" element={<Budgets />} />
           </Routes>
         </main>

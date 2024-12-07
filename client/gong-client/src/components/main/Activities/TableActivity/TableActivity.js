@@ -1,9 +1,13 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext,useState } from "react";
 import axios from 'axios';
 import TableActivityView from "./TableActivity.view.js"
 import { ActivitiesContext } from "../ActivitiesProvider";
 
 const TableActivity = () => {
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
     const { activities, setActivities } = useContext(ActivitiesContext);  
      const token = sessionStorage.getItem("token")
           
@@ -39,6 +43,10 @@ const TableActivity = () => {
 
     return (
        <TableActivityView
+       isModalOpen={isModalOpen}
+       setIsModalOpen={setIsModalOpen}
+       openModal={openModal}
+       closeModal={closeModal}
        columns={columns} 
        activities={activities}
        />

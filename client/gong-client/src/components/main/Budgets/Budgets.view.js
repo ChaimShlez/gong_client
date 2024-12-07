@@ -1,60 +1,77 @@
-import React from "react";
-import "./Budgets.style.css";
+import { FaRegEdit } from "react-icons/fa";
+import { CiSquarePlus } from "react-icons/ci";
+import React from "react"
+import "./Budgets.style.css"
+import moment from 'moment';
+import CreateBudgets from "./CreateBudgets/CreateBudgets";
+import Modal from "react-modal";
 
-function BudgetsView({
-    sumBudgets,
-    remainingAmount,
-    calculateBudgets,
-    categories,
-    budgetUpdates,
-    handleBudgetUpdate,
-    createBudgets,
+export default function BUdgetsView({
+    budgets,
+    columns,
+    isModalOpen,
+    setIsModalOpen,
+    openModal,
+    closeModal
 }) {
+
+    const customStyles = {
+        content: {
+            top: "10%",
+            left: "25%",
+            right: "auto",
+            bottom: "auto",
+            marginRight: "-50%",
+            //transform: "translate(-50%, -50%)",
+            backgroundColor: "#8fb1de",
+            height: "75%",
+            width: "35%",
+            border: "2px solid #006dff",
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+            borderRadius: "10px",
+            opacity: "0.95",
+        },
+    };
+
     return (
-        <div className="budgets-container">
-            <h2 className="budget-title">תקציב חודשי</h2>
-
-            <div className="income-box">
-                <div className="income-total">
-                    <span>סך הכנסות: </span>
-                    <strong>₪{sumBudgets[0]?.total_income || 0}</strong>
-                </div>
-                <div className="income-remaining">
-                    <span>תקציב זמין: </span>
-                    <strong>₪{remainingAmount}</strong>
-                </div>
+        <div className="Budget">
+            <div>
+                <button
+                    className="button"
+                    onClick={openModal}
+                ><CiSquarePlus /></button>
+                <Modal
+                    isOpen={isModalOpen}
+                    onRequestClose={closeModal}
+                    style={customStyles}
+                >
+                    <CreateBudgets setIsModalOpen={setIsModalOpen} />
+                </Modal>
             </div>
+            <table className="budgets-table">
+                <thead>
+                    <tr>
+                        {columns.map((column, index) => (
+                            <th key={index}>{column}</th>
+                        ))}
+                    </tr>
+                </thead>
+                <tbody>
+                    {budgets.map((budget, index) => (
+                        <tr key={index}>
+                            <td>
+                                {budget.sum_budget}
+                            </td>
+                            <td>{Object.entries(budget.budget)
+                                .map(([key, value]) => `${key}: ${value}`)
+                                .join(", ")}</td>
 
-            <div className="categories-list">
-                {categories.map((category, index) => (
-                    <div key={index} className="category-item">
-                        <div className="category-info">
-                            <span className="category-name">{category.name}</span>
-                        </div>
-                        <div className="category-update">
-                            <input
-                                type="number"
-                                placeholder="הכנס תקציב צפוי"
-                                value={budgetUpdates[category.name] || ''}
-                                onChange={(e) =>
-                                    handleBudgetUpdate(category.name, e.target.value)
-                                }
-                                onBlur={(e) => calculateBudgets(e.target.value)}
-                                className="budget-input"
-                            />
-                        </div>
-                    </div>
-                ))}
-            </div>
-
-            <button
-                className="update-budget-btn"
-                onClick={createBudgets}
-            >
-                עדכן תקציב
-            </button>
+                            <td><FaRegEdit /></td>
+                            <td>{moment(budget.date).format('MMMM,YYYY')}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     );
 }
-
-export default BudgetsView;

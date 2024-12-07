@@ -1,89 +1,49 @@
-.budgets-container {
-   width: 17%;
-    margin: 0 auto;
-    background-color: #f4f4f4;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.budget-title {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-    font-size: 24px;
-}
-
-.income-box {
-    background-color: #e6f3e6;
-    border-radius: 10px;
-    padding: 15px;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.income-total, .income-remaining {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.income-total strong, .income-remaining strong {
-    color: #2c7a2c;
-    font-size: 20px;
-}
-
-.categories-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.category-item {
-    background-color: #f0f0f0;
-    border-radius: 10px;
-    padding: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.category-info {
-    display: flex;
-    flex-direction: column;
-}
-
-.category-name {
-    font-weight: bold;
-    color: #333;
-}
-
-.category-budget {
-    color: #666;
-    font-size: 0.9em;
-}
-
-.budget-input {
-    width: 120px;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    text-align: center;
-}
-
-.update-budget-btn {
+.Budget{
     width: 100%;
-    padding: 12px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    margin-top: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    margin-left: 25px;
 }
 
-.update-budget-btn:hover {
-    background-color: #45a049;
+.budgets-table {
+    width: 100%; 
+    border-collapse: collapse; 
 }
+
+.budgets-table th, td {
+    
+    padding: 10px; 
+    text-align: left; 
+    border: 1px solid #2d4758;
+}
+
+.budgets-table th {
+ background-color: #f2f2f2;
+ color: #B1B6C0;
+font-family: Inter;
+font-size: 13px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+text-align: center;
+}
+
+.budgets-table tr {
+    border-bottom: 1px solid #F2F5F7;
+    text-align: center;
+}
+
+.budgets-table td {
+    border: none;
+    text-align: center;
+    color: #747680;
+    font-family: Inter;
+    font-size: 10.7px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    border: 1px solid #7ab9e7;
+}
+
+.budgets-table tr td {
+    border-top: 1px solid #F2F5F7; 
+}
+
